@@ -22,6 +22,7 @@
 		6002E8B027002AB40015CB6F /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6002E8AF27002AB40015CB6F /* NetworkRequest.swift */; };
 		6002E8B2270034D60015CB6F /* CommitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6002E8B1270034D60015CB6F /* CommitCell.swift */; };
 		6002E8B52700CD9D0015CB6F /* FlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6002E8B42700CD9D0015CB6F /* FlowController.swift */; };
+		6002E8B82700D2970015CB6F /* ScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6002E8B72700D2970015CB6F /* ScreenFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		6002E8AF27002AB40015CB6F /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		6002E8B1270034D60015CB6F /* CommitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitCell.swift; sourceTree = "<group>"; };
 		6002E8B42700CD9D0015CB6F /* FlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowController.swift; sourceTree = "<group>"; };
+		6002E8B72700D2970015CB6F /* ScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		6002E86F26FEDD720015CB6F /* CommitsApp */ = {
 			isa = PBXGroup;
 			children = (
+				6002E8B62700D27E0015CB6F /* ScreenFactory */,
 				6002E8B32700CD8A0015CB6F /* FlowController */,
 				6002E8AE27002A6B0015CB6F /* NetworkRequest */,
 				6002E8AB270005980015CB6F /* Model */,
@@ -187,6 +190,14 @@
 				6002E8B42700CD9D0015CB6F /* FlowController.swift */,
 			);
 			path = FlowController;
+			sourceTree = "<group>";
+		};
+		6002E8B62700D27E0015CB6F /* ScreenFactory */ = {
+			isa = PBXGroup;
+			children = (
+				6002E8B72700D2970015CB6F /* ScreenFactory.swift */,
+			);
+			path = ScreenFactory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +335,7 @@
 				6002E8B2270034D60015CB6F /* CommitCell.swift in Sources */,
 				6002E8B52700CD9D0015CB6F /* FlowController.swift in Sources */,
 				6002E8B027002AB40015CB6F /* NetworkRequest.swift in Sources */,
+				6002E8B82700D2970015CB6F /* ScreenFactory.swift in Sources */,
 				6002E8A8270004B90015CB6F /* CommitsViewController.swift in Sources */,
 				6002E87526FEDD720015CB6F /* LoginViewController.swift in Sources */,
 				6002E87126FEDD720015CB6F /* AppDelegate.swift in Sources */,

@@ -12,6 +12,14 @@ protocol FlowControllable {
     // more flow for future
 }
 
+//******************************************************************************
+// FlowController will control the whole flow of app
+// Individual screen will not know about business flow
+//
+// This class will also do dependency injection for all screens.
+// Will inject flow controller, viewmodel instance etc, required for viewcontroller
+//******************************************************************************
+
 class FlowController: FlowControllable {
     var navController: UINavigationController?
     init(navController: UINavigationController?) {
@@ -20,9 +28,12 @@ class FlowController: FlowControllable {
     
     func startCommitFlow() {
         let viewModel = CommitsViewModel()
-        let commitVC = CommitsViewController(viewModel: viewModel,
-                                             flowController: self)
+        let commitVC = ScreenFactory.create(for: .commitScreen,
+                             viewModel: viewModel,
+                             flowController: self)
         
-        navController?.pushViewController(commitVC, animated: true)
+        if let commitVC = commitVC {
+            navController?.pushViewController(commitVC, animated: true)
+        }
     }
 }

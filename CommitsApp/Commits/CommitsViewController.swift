@@ -41,6 +41,8 @@ class CommitsViewController: UIViewController, UITableViewDelegate {
         setupConstraints()
         view.backgroundColor = .white
         self.title = "COMMITS"
+        
+        // fetch commit list
         viewModel.getCommits { [weak self] commits, error in
             DispatchQueue.main.async {
                 if let commits = commits {
