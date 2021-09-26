@@ -11,7 +11,8 @@ class CommitsViewController: UIViewController, UITableViewDelegate {
     
     var viewModel: CommitsViewable
     var flowController: FlowControllable
-    
+    var activityView: UIActivityIndicatorView?
+
     lazy var dataArray = [Commits]()
     
     let tableView: UITableView = {
@@ -37,19 +38,36 @@ class CommitsViewController: UIViewController, UITableViewDelegate {
         view = UIView(frame: UIScreen.main.bounds)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .singleLineEtched
+        tableView.separatorColor = .darkGray
         view.addSubview(tableView)
         setupConstraints()
         view.backgroundColor = .white
         self.title = "COMMITS"
         
+        showActivityIndicator()
         // fetch commit list
         viewModel.getCommits { [weak self] commits, error in
             DispatchQueue.main.async {
+                self?.hideActivityIndicator()
                 if let commits = commits {
                     self?.dataArray = commits
                     self?.tableView.reloadData()
                 }
             }
+        }
+    }
+    
+    func showActivityIndicator() {
+        activityView = UIActivityIndicatorView(style: .large)
+        activityView?.center = self.view.center
+        self.view.addSubview(activityView!)
+        activityView?.startAnimating()
+    }
+
+    func hideActivityIndicator(){
+        if (activityView != nil){
+            activityView?.stopAnimating()
         }
     }
     
@@ -70,9 +88,9 @@ extension CommitsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CommitCell", for: indexPath) as? CommitCell {
-            cell.author.text = dataArray[indexPath.row].commit?.author?.name
-            cell.message.text = dataArray[indexPath.row].commit?.message
-            cell.hashLabel.text = dataArray[indexPath.row].commit?.tree?.sha
+            cell.author.text = "Author- \(dataArray[indexPath.row].commit?.author?.name ?? "")"
+            cell.message.text = "Message- \(dataArray[indexPath.row].commit?.message ?? "")"
+            cell.hashLabel.text = "Hash- \(dataArray[indexPath.row].commit?.tree?.sha ?? "")"
             return cell
         }
         return UITableViewCell()

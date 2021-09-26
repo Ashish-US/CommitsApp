@@ -12,6 +12,7 @@ class CommitCell: UITableViewCell {
     var message: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.textColor = .systemGreen
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -19,6 +20,7 @@ class CommitCell: UITableViewCell {
     var author: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.textColor = .systemBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -26,18 +28,25 @@ class CommitCell: UITableViewCell {
     var hashLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.textColor = .darkGray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-
+    let seperatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .darkGray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var vStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [message, author, hashLabel])
+        let stackView = UIStackView(arrangedSubviews: [message, author, hashLabel, seperatorView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .equalCentering
         stackView.alignment = .leading
-        stackView.spacing = 5
+        stackView.spacing = 2
         return stackView
     }()
 
@@ -75,6 +84,8 @@ class CommitCell: UITableViewCell {
         vStackView.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -5)].forEach {
             $0.isActive = true
         }
+        
+        seperatorView.heightAnchor.constraint(equalToConstant: 4).isActive = true
     }
 }
 
