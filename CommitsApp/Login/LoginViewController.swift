@@ -8,7 +8,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    var viewModel = LoginViewModel()
+    var viewModel: LoginViewable
     var flowController: FlowControllable?
     
     let loginButton: UIButton = {
@@ -21,6 +21,17 @@ class LoginViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    init(viewModel: LoginViewable = LoginViewModel(),
+         flowController: FlowControllable = FlowController(navController: nil)) {
+        self.viewModel = viewModel
+        self.flowController = flowController
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

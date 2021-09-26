@@ -15,6 +15,13 @@ enum RequestError: Error {
 }
 
 struct NetworkRequest {
+    typealias NetworkResult<T: Decodable> = (response: HTTPURLResponse, object: T)
+
+    // MARK: Private Constants
+    static let callbackURLScheme = "CommitsApp"
+    static let clientID = "Iv1.4c615f2cefd678da"
+    static let clientSecret = "ca69a43167c58cfbf5f76523ef61b1c241887a2c"
+
   enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
@@ -78,13 +85,6 @@ struct NetworkRequest {
     }
   }
 
-  typealias NetworkResult<T: Decodable> = (response: HTTPURLResponse, object: T)
-
-  // MARK: Private Constants
-  static let callbackURLScheme = "CommitsApp"
-  static let clientID = "Iv1.4c615f2cefd678da"
-  static let clientSecret = "ca69a43167c58cfbf5f76523ef61b1c241887a2c"
-
   // MARK: Properties
   var method: HTTPMethod
   var url: URL
@@ -97,7 +97,8 @@ struct NetworkRequest {
   }
 
   // MARK: Methods
-    func start<T: Decodable>(responseType: T.Type, completionHandler: @escaping ((Result<NetworkResult<T>, Error>) -> Void)) {
+    func login<T: Decodable>(responseType: T.Type, completionHandler: @escaping ((Result<NetworkResult<T>, Error>) -> Void)) {
+        
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         if let accessToken = NetworkRequest.accessToken {
