@@ -10,7 +10,10 @@ import UIKit
 class CommitsViewController: UIViewController, UITableViewDelegate {
     
     var viewModel: CommitsViewable
+    var flowController: FlowControllable
+    
     lazy var dataArray = [Commits]()
+    
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -18,8 +21,10 @@ class CommitsViewController: UIViewController, UITableViewDelegate {
         return tableView
     }()
 
-    init(viewModel: CommitsViewable = CommitsViewModel()) {
+    init(viewModel: CommitsViewable,
+         flowController: FlowControllable) {
         self.viewModel = viewModel
+        self.flowController = flowController
         super.init(nibName: nil, bundle: nil)
     }
     

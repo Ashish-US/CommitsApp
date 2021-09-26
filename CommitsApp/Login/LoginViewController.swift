@@ -9,6 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     var viewModel = LoginViewModel()
+    var flowController: FlowControllable?
     
     let loginButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -23,17 +24,19 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        flowController = FlowController(navController: navigationController)
         self.title = "LOGIN"
         view.addSubview(loginButton)
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
         setupConstraint()
         
-        let vc = CommitsViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        // if access token exist directly show the commits screen
+        flowController?.startCommitFlow()
     }
     
     @objc func login() {
-        viewModel.login { result in
+        viewModel.login { [weak self] result in
+            self?.flowController?.startCommitFlow()
         }
     }
     
