@@ -10,6 +10,7 @@ import UIKit
 // All navigation state for the app, whenever new screen is added this to be updated
 enum CommitAppScreen {
     case commitScreen
+    case otherScreen
     // add more screens as app grows
 }
 
@@ -26,7 +27,12 @@ class ScreenFactory {
         case .commitScreen:
             return CommitsViewController(viewModel: viewModel,
                                                  flowController: flowController)
+            
+        default:
+            return nil
         }
+        
+        
     }
 }
 
