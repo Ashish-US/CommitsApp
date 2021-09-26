@@ -57,6 +57,7 @@ class LoginViewModel: NSObject, LoginViewable {
               NetworkRequest.RequestType.codeExchange(code: code).networkRequest()
           else {
             print("An error occurred when attempting to sign in.")
+            completion(false)
             return
           }
 
@@ -65,8 +66,10 @@ class LoginViewModel: NSObject, LoginViewable {
             case .success:
                 print("Login Success")
               // navigate to commits screen
+                completion(true)
             case .failure(let error):
               print("Failed to exchange access code for tokens: \(error)")
+                completion(false)
             }
           }
         }

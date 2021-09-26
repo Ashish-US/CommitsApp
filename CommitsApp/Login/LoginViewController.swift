@@ -35,8 +35,10 @@ class LoginViewController: UIViewController {
     }
     
     @objc func login() {
-        viewModel.login { [weak self] result in
-            self?.flowController?.startCommitFlow()
+        viewModel.login { [weak self] loginSuccess in
+            if loginSuccess {
+                self?.flowController?.startCommitFlow()
+            }
         }
     }
     
