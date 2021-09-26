@@ -15,7 +15,6 @@ protocol LoginViewable {
 
 class LoginViewModel: NSObject, LoginViewable {
     // MARK: Private Constants
-    private(set) var isLoading = false
     private static let accessTokenKey = "accessToken"
     private static let refreshTokenKey = "refreshToken"
     private static let usernameKey = "username"
@@ -61,7 +60,6 @@ class LoginViewModel: NSObject, LoginViewable {
             return
           }
 
-          self?.isLoading = true
           networkRequest.start(responseType: String.self) { result in
             switch result {
             case .success:
@@ -69,7 +67,6 @@ class LoginViewModel: NSObject, LoginViewable {
               // navigate to commits screen
             case .failure(let error):
               print("Failed to exchange access code for tokens: \(error)")
-              self?.isLoading = false
             }
           }
         }
