@@ -44,7 +44,10 @@ class CommitsViewController: UIViewController, UITableViewDelegate {
         setupConstraints()
         view.backgroundColor = .white
         self.title = "COMMITS"
-        
+        getData()
+    }
+
+    private func getData() {
         showActivityIndicator()
         // fetch commit list
         viewModel.getCommits { [weak self] commits, error in
