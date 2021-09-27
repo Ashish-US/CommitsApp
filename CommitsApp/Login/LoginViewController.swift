@@ -8,8 +8,8 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    var viewModel: LoginViewable
-    var flowController: FlowControllable?
+    var viewModel: LoginViewable = LoginViewModel()
+    var flowController: FlowControllable = FlowController(navController: nil)
     
     let loginButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -22,15 +22,15 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    init(viewModel: LoginViewable = LoginViewModel(),
-         flowController: FlowControllable = FlowController(navController: nil)) {
+    init(viewModel: LoginViewable,
+         flowController: FlowControllable) {
         self.viewModel = viewModel
         self.flowController = flowController
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     override func viewDidLoad() {
@@ -42,13 +42,13 @@ class LoginViewController: UIViewController {
         setupConstraint()
         
         // if access token exist directly show the commits screen
-        flowController?.startCommitFlow()
+        flowController.startCommitFlow()
     }
     
     @objc func login() {
         viewModel.login { [weak self] loginSuccess in
             if loginSuccess {
-                self?.flowController?.startCommitFlow()
+                self?.flowController.startCommitFlow()
             }
         }
     }
