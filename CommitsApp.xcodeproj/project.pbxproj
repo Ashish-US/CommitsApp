@@ -29,6 +29,8 @@
 		6002E8C12700E08F0015CB6F /* FlowControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6002E8C02700E08F0015CB6F /* FlowControllerTests.swift */; };
 		6002E8C32700E49C0015CB6F /* ScreenFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6002E8C22700E49C0015CB6F /* ScreenFactoryTests.swift */; };
 		6002E8C5270137720015CB6F /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6002E8C4270137720015CB6F /* LoginViewControllerTests.swift */; };
+		607E68A12702A2510026055A /* CommitsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E68A02702A2510026055A /* CommitsViewControllerTests.swift */; };
+		607E68A32702A2B10026055A /* FakeActivityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E68A22702A2B10026055A /* FakeActivityPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		6002E8C02700E08F0015CB6F /* FlowControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowControllerTests.swift; sourceTree = "<group>"; };
 		6002E8C22700E49C0015CB6F /* ScreenFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactoryTests.swift; sourceTree = "<group>"; };
 		6002E8C4270137720015CB6F /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
+		607E68A02702A2510026055A /* CommitsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsViewControllerTests.swift; sourceTree = "<group>"; };
+		607E68A22702A2B10026055A /* FakeActivityPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeActivityPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,7 @@
 				6002E8C02700E08F0015CB6F /* FlowControllerTests.swift */,
 				6002E8C22700E49C0015CB6F /* ScreenFactoryTests.swift */,
 				6002E8C4270137720015CB6F /* LoginViewControllerTests.swift */,
+				607E68A02702A2510026055A /* CommitsViewControllerTests.swift */,
 			);
 			path = CommitsAppTests;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				6002E8BA2700DC730015CB6F /* FakeCommitsViewModel.swift */,
 				6002E8BC2700DDD90015CB6F /* FakeFlowController.swift */,
 				6002E8BE2700DE7D0015CB6F /* FakeLoginViewModel.swift */,
+				607E68A22702A2B10026055A /* FakeActivityPresenter.swift */,
 			);
 			path = "Test Fakes";
 			sourceTree = "<group>";
@@ -376,6 +382,8 @@
 			files = (
 				6002E8BD2700DDD90015CB6F /* FakeFlowController.swift in Sources */,
 				6002E8C12700E08F0015CB6F /* FlowControllerTests.swift in Sources */,
+				607E68A12702A2510026055A /* CommitsViewControllerTests.swift in Sources */,
+				607E68A32702A2B10026055A /* FakeActivityPresenter.swift in Sources */,
 				6002E8C32700E49C0015CB6F /* ScreenFactoryTests.swift in Sources */,
 				6002E8C5270137720015CB6F /* LoginViewControllerTests.swift in Sources */,
 				6002E8BB2700DC740015CB6F /* FakeCommitsViewModel.swift in Sources */,

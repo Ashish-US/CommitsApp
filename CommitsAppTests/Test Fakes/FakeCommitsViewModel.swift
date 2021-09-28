@@ -9,10 +9,10 @@ import Foundation
 @testable import CommitsApp
 
 class FakeCommitsViewModel: CommitsViewable {
-    var didCallgetCommits = false
+    var didCallGetCommits = false
     var commits: [Commits]?
     func getCommits(completion: @escaping ([Commits]?, Error?) -> Void) {
-        didCallgetCommits = true
+        didCallGetCommits = true
         if let commits = commits {
             completion(commits, nil)
         } else {

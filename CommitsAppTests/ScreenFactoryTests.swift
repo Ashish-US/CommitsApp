@@ -16,9 +16,12 @@ class ScreenFactoryTests: XCTestCase {
         subject = ScreenFactory()
         let viewModel = FakeCommitsViewModel()
         let flowController = FakeFlowController()
+        let activityPresenter = ActivityPresenter()
         let commitVC = ScreenFactory.create(for: .commitScreen,
                                             viewModel: viewModel,
-                                            flowController: flowController)
+                                            flowController: flowController,
+                                            activityPresenter: activityPresenter)
+        
         if let vc = commitVC as? CommitsViewController {
             XCTAssertNotNil(vc, "Unable to create Commits View controller")
         }
@@ -28,9 +31,12 @@ class ScreenFactoryTests: XCTestCase {
         subject = ScreenFactory()
         let viewModel = FakeCommitsViewModel()
         let flowController = FakeFlowController()
+        let activityPresenter = ActivityPresenter()
+
         let vc = ScreenFactory.create(for: .otherScreen,
                                       viewModel: viewModel,
-                                      flowController: flowController)
+                                      flowController: flowController,
+                                      activityPresenter: activityPresenter)
         XCTAssertNil(vc)
     }
 

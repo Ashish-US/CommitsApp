@@ -51,7 +51,7 @@ class CommitsViewController: UIViewController, UITableViewDelegate {
         getData()
     }
 
-    private func getData() {
+    func getData() {
         acitivityPresenter.showActivityIndicator(on: view)
         // fetch commit list
         viewModel.getCommits { [weak self] commits, error in
