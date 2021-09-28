@@ -55,7 +55,7 @@ class LoginViewModel: NSObject, LoginViewable {
             print("Failed to start ASWebAuthenticationSession")
         }
     }
-  }
+}
 
 extension LoginViewModel: ASWebAuthenticationPresentationContextProviding {
   func presentationAnchor(for session: ASWebAuthenticationSession)

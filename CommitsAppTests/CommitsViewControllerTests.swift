@@ -34,14 +34,14 @@ class CommitsViewControllerTests: XCTestCase {
         XCTAssertNotNil(subject.view)
     }
 
-    func testGetDataSuccess() {
+    func testGetCommitsSuccess() {
         viewModel.commits = [Commits.dummy()]
         subject.getData()
         XCTAssertTrue(viewModel.didCallGetCommits)
         XCTAssertTrue(activityPresenter.didCallShowActivityIndicator)
     }
 
-    func testGetDataFail() {
+    func testGetCommitsFail() {
         viewModel.commits = nil
         subject.getData()
         XCTAssertTrue(viewModel.didCallGetCommits)

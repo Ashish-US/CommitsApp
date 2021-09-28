@@ -13,12 +13,10 @@ protocol CommitsViewable {
 class CommitsViewModel: CommitsViewable {
     var networkRequest: NetworkRequest?
     func getCommits(completion: @escaping ([Commits]?, Error?) -> Void) {
-        NetworkRequest
-            .RequestType
-            .getCommit
-            .networkRequest()?
-            .fetchCommits(completion: { commit, error in
+        if let request = NetworkRequest.RequestType.getCommit.networkRequest() {
+            request.fetchCommits(completion: { commit, error in
                 completion(commit, error)
             })
+        }
     }
 }
