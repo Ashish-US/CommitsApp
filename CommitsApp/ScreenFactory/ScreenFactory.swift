@@ -22,11 +22,13 @@ enum CommitAppScreen {
 class ScreenFactory {
     static func create(for screen: CommitAppScreen,
                        viewModel: CommitsViewable,
-                       flowController: FlowControllable) -> UIViewController? {
+                       flowController: FlowControllable,
+                       activityPresenter: ActivityPresentable) -> UIViewController? {
         switch screen {
         case .commitScreen:
             return CommitsViewController(viewModel: viewModel,
-                                                 flowController: flowController)
+                                         flowController: flowController,
+                                         activityPresenter: activityPresenter)
             
         default:
             return nil

@@ -28,9 +28,11 @@ class FlowController: FlowControllable {
     
     func startCommitFlow() {
         let viewModel = CommitsViewModel()
+        let activityPresenter = ActivityPresenter()
         let commitVC = ScreenFactory.create(for: .commitScreen,
                              viewModel: viewModel,
-                             flowController: self)
+                             flowController: self,
+                             activityPresenter: activityPresenter)
         
         if let commitVC = commitVC {
             navController?.pushViewController(commitVC, animated: true)

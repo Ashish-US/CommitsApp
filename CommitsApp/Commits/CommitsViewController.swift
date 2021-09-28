@@ -11,8 +11,8 @@ class CommitsViewController: UIViewController, UITableViewDelegate {
     
     var viewModel: CommitsViewable
     var flowController: FlowControllable
-    var activityView: UIActivityIndicatorView?
-
+    var acitivityPresenter: ActivityPresentable
+    
     lazy var dataArray = [Commits]()
     
     let tableView: UITableView = {
@@ -23,9 +23,11 @@ class CommitsViewController: UIViewController, UITableViewDelegate {
     }()
 
     init(viewModel: CommitsViewable,
-         flowController: FlowControllable) {
+         flowController: FlowControllable,
+         activityPresenter: ActivityPresentable) {
         self.viewModel = viewModel
         self.flowController = flowController
+        self.acitivityPresenter = activityPresenter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -36,23 +38,25 @@ class CommitsViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = UIView(frame: UIScreen.main.bounds)
+        view.backgroundColor = .white
+        self.title = "COMMITS"
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .singleLineEtched
         tableView.separatorColor = .darkGray
         view.addSubview(tableView)
+        
         setupConstraints()
-        view.backgroundColor = .white
-        self.title = "COMMITS"
         getData()
     }
 
     private func getData() {
-        showActivityIndicator()
+        acitivityPresenter.showActivityIndicator(on: view)
         // fetch commit list
         viewModel.getCommits { [weak self] commits, error in
             DispatchQueue.main.async {
-                self?.hideActivityIndicator()
+                self?.acitivityPresenter.hideActivityIndicator()
                 if let commits = commits {
                     self?.dataArray = commits
                     self?.tableView.reloadData()
@@ -60,20 +64,7 @@ class CommitsViewController: UIViewController, UITableViewDelegate {
             }
         }
     }
-    
-    func showActivityIndicator() {
-        activityView = UIActivityIndicatorView(style: .large)
-        activityView?.center = self.view.center
-        self.view.addSubview(activityView!)
-        activityView?.startAnimating()
-    }
-
-    func hideActivityIndicator(){
-        if (activityView != nil){
-            activityView?.stopAnimating()
-        }
-    }
-    
+        
     func setupConstraints() {
         [tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
          tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -98,4 +89,26 @@ extension CommitsViewController: UITableViewDataSource {
         }
         return UITableViewCell()
     }
+}
+
+protocol ActivityPresentable {
+    func showActivityIndicator(on view: UIView)
+    func hideActivityIndicator()
+}
+class ActivityPresenter: ActivityPresentable {
+    var activityView: UIActivityIndicatorView?
+    
+    func showActivityIndicator(on view: UIView) {
+        activityView = UIActivityIndicatorView(style: .large)
+        activityView?.center = view.center
+        view.addSubview(activityView!)
+        activityView?.startAnimating()
+    }
+
+    func hideActivityIndicator(){
+        if (activityView != nil){
+            activityView?.stopAnimating()
+        }
+    }
+
 }
