@@ -9,6 +9,7 @@ import UIKit
 
 class CommitCell: UITableViewCell {
 
+    
     var message: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
